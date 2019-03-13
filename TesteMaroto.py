@@ -7,4 +7,8 @@ expression = r"mov\s+\w+,\s+\d+"
 m=re.match(ex,"mov A23eF, 23")
 print(m[2])
 """
+vetor=bytearray(2)
 
+inteiro =2
+inteiro+=1
+print(inteiro)
