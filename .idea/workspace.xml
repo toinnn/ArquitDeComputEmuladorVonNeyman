@@ -12,13 +12,16 @@
     <session id="-1081203066">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="7" />
+          <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.18" value="1" />
+          <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.48" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -33,12 +36,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="3780" />
+          <entry key="py" value="6869" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="3780" />
+          <entry key="Python" value="6869" />
         </counts>
       </usages-collector>
     </session>
@@ -48,14 +51,36 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/EmuladorVonNeyman.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="126" column="42" selection-start-line="126" selection-start-column="42" selection-end-line="126" selection-end-column="42" />
+            <state relative-caret-position="380">
+              <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
-                <marker date="1552677584114" expanded="true" signature="77:126" ph="..." />
-                <marker date="1552677584114" expanded="true" signature="2091:2175" ph="..." />
-                <marker date="1552677584114" expanded="true" signature="2422:2454" ph="..." />
-                <marker date="1552677584114" expanded="true" signature="2485:2550" ph="..." />
+                <element signature="e#82#125#0" />
+                <element signature="e#555#654#0" />
+                <element signature="e#1751#1869#0" />
+                <element signature="e#1967#2211#0" />
+                <element signature="e#2276#2364#0" />
+                <element signature="e#1817#2748#0" />
+                <element signature="e#3676#3698#0" />
+                <element signature="e#3739#4804#0" />
+                <element signature="e#2445#4142#0" />
+                <element signature="e#4198#4284#0" />
+                <element signature="e#4330#4602#0" />
+                <element signature="e#4640#5072#0" />
+                <element signature="e#5147#5259#0" />
+                <element signature="e#5340#6086#0" />
+                <element signature="e#6158#6598#0" />
+                <element signature="e#6643#7043#0" />
+                <element signature="e#7090#8182#0" />
+                <element signature="e#8223#8766#0" />
+                <marker date="1553270949759" expanded="false" signature="77:126" ph="..." />
+                <marker date="1553270949759" expanded="true" signature="1419:1814" ph="..." />
+                <marker date="1553270949759" expanded="true" signature="1631:1814" ph="..." />
+                <marker date="1553270949759" expanded="true" signature="1834:2090" ph="..." />
+                <marker date="1553270949759" expanded="false" signature="4617:5472" ph="..." />
+                <marker date="1553270949759" expanded="true" signature="7895:7979" ph="..." />
+                <marker date="1553270949759" expanded="true" signature="8232:8428" ph="..." />
+                <marker date="1553270949759" expanded="true" signature="8459:8524" ph="..." />
               </folding>
             </state>
           </provider>
@@ -64,11 +89,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TesteMaroto.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+            <state relative-caret-position="278">
+              <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
-                <marker date="1552676777134" expanded="true" signature="395:428" ph="..." />
+                <marker date="1553267791749" expanded="true" signature="871:904" ph="..." />
               </folding>
             </state>
           </provider>
@@ -94,7 +119,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1340" />
@@ -106,7 +131,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -118,6 +142,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -205,25 +230,47 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/TesteMaroto.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+        <state relative-caret-position="278">
+          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <marker date="1552676777134" expanded="true" signature="395:428" ph="..." />
+            <marker date="1553267791749" expanded="true" signature="871:904" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/EmuladorVonNeyman.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="126" column="42" selection-start-line="126" selection-start-column="42" selection-end-line="126" selection-end-column="42" />
+        <state relative-caret-position="380">
+          <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <marker date="1552677584114" expanded="true" signature="77:126" ph="..." />
-            <marker date="1552677584114" expanded="true" signature="2091:2175" ph="..." />
-            <marker date="1552677584114" expanded="true" signature="2422:2454" ph="..." />
-            <marker date="1552677584114" expanded="true" signature="2485:2550" ph="..." />
+            <element signature="e#82#125#0" />
+            <element signature="e#555#654#0" />
+            <element signature="e#1751#1869#0" />
+            <element signature="e#1967#2211#0" />
+            <element signature="e#2276#2364#0" />
+            <element signature="e#1817#2748#0" />
+            <element signature="e#3676#3698#0" />
+            <element signature="e#3739#4804#0" />
+            <element signature="e#2445#4142#0" />
+            <element signature="e#4198#4284#0" />
+            <element signature="e#4330#4602#0" />
+            <element signature="e#4640#5072#0" />
+            <element signature="e#5147#5259#0" />
+            <element signature="e#5340#6086#0" />
+            <element signature="e#6158#6598#0" />
+            <element signature="e#6643#7043#0" />
+            <element signature="e#7090#8182#0" />
+            <element signature="e#8223#8766#0" />
+            <marker date="1553270949759" expanded="false" signature="77:126" ph="..." />
+            <marker date="1553270949759" expanded="true" signature="1419:1814" ph="..." />
+            <marker date="1553270949759" expanded="true" signature="1631:1814" ph="..." />
+            <marker date="1553270949759" expanded="true" signature="1834:2090" ph="..." />
+            <marker date="1553270949759" expanded="false" signature="4617:5472" ph="..." />
+            <marker date="1553270949759" expanded="true" signature="7895:7979" ph="..." />
+            <marker date="1553270949759" expanded="true" signature="8232:8428" ph="..." />
+            <marker date="1553270949759" expanded="true" signature="8459:8524" ph="..." />
           </folding>
         </state>
       </provider>
