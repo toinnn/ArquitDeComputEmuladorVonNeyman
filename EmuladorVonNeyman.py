@@ -241,7 +241,7 @@ class Barramento :
         self.CPUfísica=CPU
         self.RAMfísica=RAM
         self.ESfísica=ES
-    def leituraES (self,dado) :
+    def leituraES (self,dado,RAMpreenchido) :
         #print("nao faço nada")
         for n in range(self.RAMpreenchido,self.RAMpreenchido+len(dado)) :
             self.RAM[n]=dado[0]
@@ -297,7 +297,8 @@ class ES :
             self.buffer=self.buffer[4::]
         else:
             print("Ainda n usei o barramento")
-            self.Barramento.leituraES(self.buffer[0:self.preenchido])
+            dado=self.buffer[0:self.preenchido]
+            self.Barramento.leituraES( dado)
             self.preenchido = 0
             self.buffer=self.buffer[len(self.buffer)::]
             print("Buffer de E\\S descarregado com sucesso")
