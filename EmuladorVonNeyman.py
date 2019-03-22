@@ -7,7 +7,7 @@ def HexToDec ():
 
 class Registrador :
     def __init__(self):
-        print("Ainda nao faço nada")
+        #print("Ainda nao faço nada")
         self.Memoria=bytearray(4)
         self.Stock=0
     def recebe(self,valor) :#Ele recebe um byte array
@@ -15,7 +15,7 @@ class Registrador :
             self.Memoria=valor
         else:
             self.Memoria=bytearray(4-len(valor))
-            self.Memoria.extend(valor)
+            self.Memoria.extend(valor[0:len(valor)])
     def dado (self):
         return self.Memoria
     def valor(self):
@@ -23,23 +23,23 @@ class Registrador :
 
 class CPU :
     def __init__(self,Barramento):
-        print("Ainda nao faço nada")
+        #print("Ainda nao faço nada")
         self.Barramento=Barramento#Prescisa rearrumar o Decoder :
-        self.Decoder={1:lambda argumento:self.mov(argumento),2:lambda argumento :self.add(argumento) , 3:lambda argumento:self.addNum(argumento) , 4:lambda x:self.inc(x),5:lambda argumento : self.imul(argumento),6 :}
+        self.Decoder={1:lambda argumento:self.mov(argumento),2:lambda argumento :self.add(argumento) , 3:lambda argumento:self.addNum(argumento) , 4:lambda x:self.inc(x),5:lambda argumento : self.imul(argumento),6 :"futuro"}
         self.PiDict={1:lambda :self.A ,2:lambda :self.B ,3:lambda :self.C,4:lambda :self.D,5:lambda :self.Pi}
-        self.A=Registrador
-        self.B =Registrador
-        self.C =Registrador
-        self.D =Registrador
-        self.Pi =Registrador
+        self.A=Registrador()
+        self.B =Registrador()
+        self.C =Registrador()
+        self.D =Registrador()
+        self.Pi =Registrador()
         self.Pi.recebe(bytearray([1]))
 
     """def leituraRAM(self):
     self.Barramento.SolicitaçãoRamDaCPU()"""
-    def leituraBarramento(self):
+    def leituraBarramento(self):#Implementar a execução dentro da leitura
         aux=self.Barramento.escritaCPU()
         auxPi=1
-        while PiDict[self.Pi.valor()].valor()!=0 :
+        while self.PiDict[self.Pi.valor()].valor()!=0 :
             self.IncremPi()
         self.PiDict[self.Pi.valor()].recebe(aux)
 
@@ -208,25 +208,25 @@ class CPU :
 
 class RAM :
     def __init__(self,Barramento):#Falta validar o tamnho dos dados que circulam na RAM
-        print("Ainda nao faço nada")
+        #print("Ainda nao faço nada")
         self.Barramento=Barramento
         self.Memoria=bytearray(128)
         self.MemoriaAlocada=0
     def leituraBarramento(self):
-        self.Memoria[self.MemoriaAlocada:self.MemoriaAlocada+len(self.Barramento.escritaRam())]=self.Barramento.escritaRam()
+        self.Memoria[self.MemoriaAlocada : self.MemoriaAlocada+len(self.Barramento.escritaRam())]=self.Barramento.escritaRam()
         self.MemoriaAlocada+=len(self.Barramento.escritaRam())
     def escritaBarramento(self):
-        if self.MemoriaAlocada >=32 :
-            self.Barramento.leituraRAM(self.Memoria[0:33])
-            self.MemoriaAlocada-=32
+        if self.MemoriaAlocada >=4 :
+            self.Barramento.leituraRAM(self.Memoria[0:4])
+            self.MemoriaAlocada-=4
         else :
-            self.Barramento.leituraRAM(self.Memoria[0:33])
-            self.MemoriaAlocada -=len(self.MemoriaAlocada)
+            self.Barramento.leituraRAM(self.Memoria[0:self.MemoriaAlocada])
+            self.MemoriaAlocada =0
 
 
 class Barramento :
     def __init__(self):
-        print("Ainda nao faço nada")
+        #print("Ainda nao faço nada")
         self.CPU =bytearray(4)
         self.ES=bytearray(4)
         self.RAM=bytearray(4)
@@ -242,31 +242,31 @@ class Barramento :
         self.RAMfísica=RAM
         self.ESfísica=ES
     def leituraES (self,dado) :
-        print("nao faço nada")
-        for n in range(self.ESpreenchido,self.ESpreenchido+len(dado)) :
+        #print("nao faço nada")
+        for n in range(self.RAMpreenchido,self.RAMpreenchido+len(dado)) :
             self.RAM[n]=dado[0]
             dado.pop(0)
             self.RAMpreenchido+=1
     def leituraRAM (self,dado) :
-        print("Ola mundo")
+        #print("Ola mundo")
         for n in range(self.CPUpreenchido,self.CPUpreenchido+len(dado)) :
             self.CPU[n]=dado[0]
             dado.pop(0)
             self.CPUpreenchido+=1
     def SolicitaçãoRamDaCPU(self) :
         print("oi eu sou o mundo")
-        self.RAMfísica.
+        #self.RAMfísica.
 
     def escritaRam (self) :
         if self.RAMpreenchido>=4 :
-            aux = self.RAM[0:5]
-            del self.RAM[0:5]
+            aux = self.RAM[0:4]
+            del self.RAM[0:4]
             self.RAMpreenchido-=4
             return  aux
         else:
             aux=self.RAM[0:self.RAMpreenchido]
             del self.RAM[0:self.RAMpreenchido]
-            self.RAMpreenchido-=self.RAMpreenchido
+            self.RAMpreenchido=0
             return aux
 
     def escritaCPU(self):
@@ -286,15 +286,22 @@ class ES :
         self.buffer=bytearray(64)
         self.preenchido=0
         self.Barramento=barramento
+        self.EntradaDado=[]
+        self.ctdEntradaDado=0
 
-    def escrita (self,Barramento) :
+    def escrita (self) :
         print("Ainda nao faço nada")
-        if self.preenchido>32 :
-            self.preenchido-=32
-            self.Barramento.leituraES(self.buffer[0:33])
+        if self.preenchido>4 :
+            self.preenchido-=4
+            self.Barramento.leituraES(self.buffer[0:4])
+            self.buffer=self.buffer[4::]
         else:
-            self.Barramento.leituraES(self.buffer[0:len(self.preenchido())])
+            print("Ainda n usei o barramento")
+            self.Barramento.leituraES(self.buffer[0:self.preenchido])
             self.preenchido = 0
+            self.buffer=self.buffer[len(self.buffer)::]
+            print("Buffer de E\\S descarregado com sucesso")
+        print("Buffer de E\\S descarregado com sucesso")
 
 
     def aloca (self,num) :
@@ -303,7 +310,7 @@ class ES :
         for n in range(self.preenchido,len(self.buffer)) :
             self.buffer[n]=num[0]
             self.preenchido+=1
-            print("{} alocado na posição {} do Buffer de E\\S".format(num, n))
+            print("{} alocado na posição {} do Buffer de E\\S".format(num[0], n))
             num.pop(0)
             if n==len(num)-1 and len(num)>0 :
                 self.aloca(num)
@@ -315,7 +322,7 @@ class ES :
             comando=bytearray([1])
             comando.extend(int(codigo[2]),int(codigo[3]))
             self.aloca(comando)
-        elif codigo[1]=="add" and codigo[3]=="A"|"B"|"C"|"D"|"Pi" :
+        elif codigo[1]=="add" and (codigo[3]=="A"or"B"or"C"or"D"or"Pi") :
             comando = bytearray([2])
 
             if codigo[2]== "A" :
@@ -410,7 +417,7 @@ class ES :
                 comando.append(5)
 
             self.aloca(comando)
-        elif codigo[1]=="imul" and (codigo[2].isnumeric()|codigo[3].isnumeric())
+        elif codigo[1]=="imul" and (codigo[2].isnumeric()|codigo[3].isnumeric()):
             comando=bytearray([6])
 
             if codigo[2]== "A" :
@@ -426,19 +433,58 @@ class ES :
 
 
     def Parser (self,codigo):
+        print("Entrou no parser")
+        print("codigo de entrada:"+codigo)
         input_string= "mov A, 2"
         ex = r"(mov)\s+0x([\d]*),\s+(\d+)"
         mo=re.match(ex,codigo)
         ad=re.match(r"(add)\s+([ABCD]|Pi),\s+([ABCD]|Pi|\d+)",codigo)
-        add=re.match(r"(add)\s+0x(\d+),\s+|",codigo)
+        #add=re.match(r"(add)\s+0x(\d+),\s+|",codigo)
         inc=re.match(r"(inc)\s+([ABCD]|Pi)",codigo)
-        im=re.match(r"(imul)\s+([ABCD]|Pi),\s([ABCD]|Pi|\d+),\s([ABCD]|Pi|\d+)")
+        im=re.match(r"(imul)\s+([ABCD]|Pi),\s([ABCD]|Pi|\d+),\s([ABCD]|Pi|\d+)",codigo)
 
         if mo :
+            print("Parser reconhece mov")
             self.Encoder(mo)
         elif ad :
+            print("Parser reconhece add")
             self.Encoder(ad)
         elif inc :
+            print("Parser reconhece inc")
             self.Encoder(inc)
         elif im :
+            print("Parser reconhece imul")
             self.Encoder(im)
+    def Imput(self,path):
+        if self.ctdEntradaDado==0 :
+            with open(path,"r") as f :
+                self.EntradaDado= f.readlines()
+        if self.ctdEntradaDado<len(self.EntradaDado) :
+            self.Parser(self.EntradaDado[self.ctdEntradaDado])
+            self.ctdEntradaDado+=1
+        elif self.ctdEntradaDado==len(self.EntradaDado) :
+            print("Não a mais codigo a ser lido")
+            self.ctdEntradaDado += 1
+        else:
+            return
+
+
+class MaqVonNeyman :
+
+    def __init__(self):
+        self.Barramento = Barramento
+        self.CPU=CPU(self.Barramento)
+        self.ES=ES(self.Barramento)
+        self.RAM=RAM(self.Barramento)
+        self.Barramento.link(self,self.CPU,self.RAM,self.ES)
+
+    def cicloFuncionamento(self):
+        for n in range(0,3):
+            self.ES.Imput("Assembly.txt")
+        self.ES.escrita()
+
+
+
+
+meuPc=MaqVonNeyman()
+meuPc.cicloFuncionamento()

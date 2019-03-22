@@ -29,9 +29,20 @@ print(cunc[0:3])
 k=int(cunc[0:3])
 print(k+n[2])
 
-lista=[]
+lista=[2,5,8,34,"amanha"]
 lista.append("oi")
-print(lista[0])
+print(lista)
+lista=lista[6::]
+print(lista)
+
+with open("Assembly.txt","r") as f :
+    aux=f.readlines()
+    print(aux[2])
+    #print(f.read())
+    #print(f.readline())
+    #print(f.readline())
+    print(f.name)
+
 """
 separator = ' '
 array = [r'_', r'_', r'_', r'_', r'_', r'_', r'_']
